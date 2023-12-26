@@ -1,0 +1,12 @@
+Gradual color change
+
+private IEnumerator ChangeEngineColour()
+{
+    float tick = 0f;
+    while (engineBodyRenderer.material.color != endColor)
+    {
+        tick += Time.deltaTime * speed;
+        engineBodyRenderer.material.color = Color.Lerp(startColor, endColor, tick);
+        yield return null;
+    }
+}
