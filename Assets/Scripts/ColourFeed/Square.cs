@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace ColourFeed
 {
@@ -9,6 +10,7 @@ namespace ColourFeed
     {
         public Vector3 extents;
         public SpriteRenderer spriteRenderer;
+        [SerializeField] private TextMeshProUGUI text;
         public static event EventHandler? SquareDestroyed;
 
         // Start is called before the first frame update
@@ -19,7 +21,14 @@ namespace ColourFeed
 
             extents = spriteRenderer.bounds.extents;
 
+            ColourText();
             // TouchControls.screenDrag += Move;
+        }
+
+        private void ColourText()
+        {
+            int rnd = UnityEngine.Random.Range(0, 3);
+            text.text = Database.GetText(rnd);
         }
 
         // Update is called once per frame
