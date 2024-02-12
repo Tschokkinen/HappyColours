@@ -13,4 +13,4 @@ but considering that this is a prototype, the level of background study is adequ
 
 <b>Colour Feed</b><br>
 Colour Feed is an experiment to see if browsing through different random colours and reading text snippets attached to them helps with mindfullnes. 
-Currently there’s only one static text attached to each colour, but randomized text are on the works.
+Currently there’s only one static text attached to each colour, but randomized text are in the works.
