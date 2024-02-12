@@ -57,6 +57,7 @@ namespace Concentration
                 }
             }
 
+            #if UNITY_EDITOR
             // Mouse controls
             if (Input.GetMouseButton(0))
             {
@@ -85,6 +86,7 @@ namespace Concentration
                 gameController.StopIncrementPoints();
                 mouseClick = false;
             }
+            #endif
         }
     }
 }

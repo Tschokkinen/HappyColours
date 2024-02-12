@@ -9,6 +9,7 @@ namespace Concentration
 {
     public class GameController : MonoBehaviour
     {
+        public Database database;
         public GameObject activeGO;
         [SerializeField] private GameObject[] squares;
         SpriteRenderer spriteRenderer;
@@ -18,6 +19,8 @@ namespace Concentration
         [SerializeField] Button button;
         [SerializeField] GameObject panel;
         [SerializeField] TMP_Text pointText;
+        [SerializeField] TMP_Text lastTimePoints;
+        [SerializeField] TMP_Text curPoints;
 
         // Start is called before the first frame update
         void Start()
@@ -27,6 +30,9 @@ namespace Concentration
 
             button.onClick.AddListener(BackToMain);
             panel.SetActive(false);
+
+
+            // GetPrevPoints();
         }
 
         IEnumerator ChangeColor()
@@ -71,6 +77,7 @@ namespace Concentration
             // Debug.Log("Coroutine stopped");
         }
 
+        // Increment points
         IEnumerator IncrementPoints()
         {
             while (true)
@@ -78,7 +85,14 @@ namespace Concentration
                 yield return new WaitForSeconds(0.5f);
                 points += 1;
                 Debug.Log($"Points: {points}");
+                UpdateCurPoints();
             }
+        }
+
+        // Update point counter text
+        private void UpdateCurPoints()
+        {
+            curPoints.text = $"Points: {points}";
         }
 
         private void BackToMain()
@@ -91,6 +105,8 @@ namespace Concentration
             Debug.Log("Button click");
             panel.SetActive(true);
             pointText.text = pointText.text + $" {points}";
+            lastTimePoints.text = lastTimePoints.text + $"{database.ReadFile()}";
+            database.WriteFile(points);
             yield return new WaitForSeconds(2.0f);
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }
