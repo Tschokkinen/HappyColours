@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Marker
+    uniqueID: 2688338163
+    locked: 0
   - name: Additive
     uniqueID: 2480158079
     locked: 0
