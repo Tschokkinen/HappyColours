@@ -9,6 +9,7 @@ namespace Concentration
 {
     public class GameController : MonoBehaviour
     {
+        public Timer timer;
         public Database database;
         public GameObject activeGO;
         [SerializeField] private GameObject[] squares;
@@ -107,6 +108,7 @@ namespace Concentration
             pointText.text = pointText.text + $" {points}";
             lastTimePoints.text = lastTimePoints.text + $"{database.ReadFile()}";
             database.WriteFile(points);
+            timer.GetComponent<Timer>().StopTimer();
             yield return new WaitForSeconds(2.0f);
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }

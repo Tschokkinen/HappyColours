@@ -8,6 +8,7 @@ namespace Concentration
     {
         GameController gameController;
         [SerializeField] bool mouseClick;
+        [SerializeField] GameObject touchMarker;
 
         void Start()
         {
@@ -35,6 +36,7 @@ namespace Concentration
                         {
                             // Debug.Log("Touched active square");
                             gameController.StartIncrementPoints();
+                            SetMarkerPos(Camera.main.ScreenToWorldPoint(touch.position));
                         }
                     }
                 }
@@ -72,6 +74,7 @@ namespace Concentration
                         // Debug.Log("Mouse button down on active square");
                         gameController.StartIncrementPoints();
                         mouseClick = true;
+                        SetMarkerPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
                     }
                     else if (hit.collider.transform != null && hit.collider.gameObject != gameController.activeGO && mouseClick)
                     {
@@ -87,6 +90,12 @@ namespace Concentration
                 mouseClick = false;
             }
             #endif
+        }
+
+        private void SetMarkerPos(Vector3 pos)
+        {
+            touchMarker.transform.position = new Vector3(pos.x, pos.y, 0);
+            touchMarker.GetComponent<TouchMarker>().PlayAnimation();
         }
     }
 }
