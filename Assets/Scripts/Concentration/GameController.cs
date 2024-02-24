@@ -9,19 +9,26 @@ namespace Concentration
 {
     public class GameController : MonoBehaviour
     {
+        [Header("DLL")]
         public Timer timer;
+
+        [Header("Database")]
         public Database database;
+
+        [Header("UI")]
         public GameObject activeGO;
         [SerializeField] private GameObject[] squares;
+        [SerializeField] Button quitGame;
         SpriteRenderer spriteRenderer;
         [SerializeField] private int points;
         Coroutine coroutine;
 
-        [SerializeField] Button button;
+        [Header("Quit game panel")]
         [SerializeField] GameObject panel;
         [SerializeField] TMP_Text pointText;
         [SerializeField] TMP_Text lastTimePoints;
         [SerializeField] TMP_Text curPoints;
+        [SerializeField] TMP_Text playTime;
 
         // Start is called before the first frame update
         void Start()
@@ -29,7 +36,7 @@ namespace Concentration
             StartCoroutine(ChangeColor());
             coroutine = null;
 
-            button.onClick.AddListener(BackToMain);
+            quitGame.onClick.AddListener(BackToMain);
             panel.SetActive(false);
 
 
@@ -108,7 +115,8 @@ namespace Concentration
             pointText.text = pointText.text + $" {points}";
             lastTimePoints.text = lastTimePoints.text + $"{database.ReadFile()}";
             database.WriteFile(points);
-            timer.GetComponent<Timer>().StopTimer();
+            // timer.GetComponent<Timer>().StopTimer();
+            playTime.text = playTime.text + timer.GetComponent<Timer>().StopTimer();
             yield return new WaitForSeconds(2.0f);
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }

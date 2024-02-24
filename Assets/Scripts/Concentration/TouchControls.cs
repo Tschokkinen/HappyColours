@@ -12,7 +12,7 @@ namespace Concentration
 
         void Start()
         {
-            gameController = GameObject.Find("Controller").GetComponent<GameController>();
+            gameController = GameObject.Find("GameController").GetComponent<GameController>();
         }
 
         // Update is called once per frame

@@ -23,10 +23,11 @@ public class Timer : MonoBehaviour
         timer = createTimer();
     }
 
-    public void StopTimer()
+    public double StopTimer()
     {
         deleteTimer(timer);
-        double playTime = getPlayTime();
-        Debug.Log($"Play time: {Math.Round(playTime, 2)}");
+        // double playTime = getPlayTime();
+        //Debug.Log($"Play time: {Math.Round(playTime, 2)}");
+        return Math.Round(getPlayTime(), 2);
     }
 }
