@@ -7,6 +7,8 @@ so it’s likely they aren’t an exact match, but close enough.</p>
 <p>One has to admit that a fullscale literature review would be in place to get more comprehensive results regarding the proper colour choises, 
 but considering that this is a prototype, the level of background study is adequete–at least in my mind.</p>
 
+You can try a WebGL version in Shimmer, but it doesn't work flawlessly there: https://simmer.io/@JaZZBox/happycolours
+
 <p>Please note that COLOUR FEED scene does exists in the project files, but it's not currently in use. In ColourFeed the user scrolls through randomly generated colours and each colour has a question or thought attached to them. ColourFeed is not currently accessible in the app because, but is "playable" in Unity.</p>
 <b>Colour Feed</b>
 <p>
