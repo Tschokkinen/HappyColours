@@ -18,6 +18,8 @@ namespace Concentration
         [Header("UI")]
         public GameObject activeGO;
         [SerializeField] private GameObject[] squares;
+        [SerializeField] private GameObject currentSquare;
+        [SerializeField] private float maxWaitTime;
         [SerializeField] Button quitGame;
         SpriteRenderer spriteRenderer;
         [SerializeField] private int points;
@@ -33,6 +35,7 @@ namespace Concentration
         // Start is called before the first frame update
         void Start()
         {
+            maxWaitTime = (maxWaitTime == 0.0f) ? 4.0f : maxWaitTime;
             StartCoroutine(ChangeColor());
             coroutine = null;
 
@@ -48,7 +51,7 @@ namespace Concentration
             while (true)
             {
                 GameObject square = GetNextSquare();
-                yield return new WaitForSeconds(4.0f);
+                yield return new WaitForSeconds(maxWaitTime);
 
                 square.GetComponent<Square>().SetActiveStatus();
                 activeGO = square;
@@ -59,10 +62,10 @@ namespace Concentration
         GameObject GetNextSquare()
         {
             float val = Random.Range(0.0f, 100.0f);
-            if (val < 25.0f) return squares[0];
-            if (val < 50.0f && val > 25.0f) return squares[1];
-            if (val < 75.0f && val > 50.0f) return squares[2];
-            if (val > 75.0f) return squares[3];
+            if (val < 25.0f && currentSquare != squares[0]) return squares[0];
+            if (val < 50.0f && val > 25.0f && currentSquare != squares[1]) return squares[1];
+            if (val < 75.0f && val > 50.0f && currentSquare != squares[2]) return squares[2];
+            if (val > 75.0f && currentSquare != squares[3]) return squares[3];
             return null;
         }
 

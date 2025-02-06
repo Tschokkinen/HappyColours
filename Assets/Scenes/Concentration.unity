@@ -1669,6 +1669,8 @@ MonoBehaviour:
   - {fileID: 1345864102}
   - {fileID: 1945493670}
   - {fileID: 100637250}
+  currentSquare: {fileID: 0}
+  maxWaitTime: 0
   quitGame: {fileID: 49948161}
   points: 0
   panel: {fileID: 1720236252}
