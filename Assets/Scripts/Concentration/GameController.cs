@@ -51,11 +51,10 @@ namespace Concentration
             while (true)
             {
                 GameObject square = GetNextSquare();
-                yield return new WaitForSeconds(maxWaitTime);
-
                 square.GetComponent<Square>().SetActiveStatus();
                 activeGO = square;
                 SetInactive();
+                yield return new WaitForSeconds(maxWaitTime);
             }
         }
 

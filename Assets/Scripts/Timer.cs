@@ -6,13 +6,15 @@ using System;
 
 public class Timer : MonoBehaviour
 {
-    [DllImport("CPP_expansions.dll")]
+    private const string LIBRARY_NAME = "CPP_expansions";
+
+    [DllImport(LIBRARY_NAME)]
     private static extern IntPtr createTimer();
 
-    [DllImport("CPP_expansions.dll")]
+    [DllImport(LIBRARY_NAME)]
     private static extern double getPlayTime();
 
-    [DllImport("CPP_expansions.dll")]
+    [DllImport(LIBRARY_NAME)]
     private static extern void deleteTimer(IntPtr instance);
 
     IntPtr timer;
