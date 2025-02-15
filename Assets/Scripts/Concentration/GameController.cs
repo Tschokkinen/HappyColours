@@ -9,8 +9,8 @@ namespace Concentration
 {
     public class GameController : MonoBehaviour
     {
-        [Header("DLL")]
-        public Timer timer;
+        // [Header("DLL")]
+        // public Timer timer;
 
         [Header("Database")]
         public Database database;
@@ -51,10 +51,10 @@ namespace Concentration
             while (true)
             {
                 GameObject square = GetNextSquare();
+                yield return new WaitForSeconds(maxWaitTime);
                 square.GetComponent<Square>().SetActiveStatus();
                 activeGO = square;
                 SetInactive();
-                yield return new WaitForSeconds(maxWaitTime);
             }
         }
 
@@ -118,7 +118,7 @@ namespace Concentration
             lastTimePoints.text = lastTimePoints.text + $"{database.ReadFile()}";
             database.WriteFile(points);
             // timer.GetComponent<Timer>().StopTimer();
-            playTime.text = playTime.text + timer.GetComponent<Timer>().StopTimer();
+            // playTime.text = playTime.text + timer.GetComponent<Timer>().StopTimer();
             yield return new WaitForSeconds(2.0f);
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }
