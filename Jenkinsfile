@@ -3,7 +3,8 @@ pipeline {
 	
 	stages {
 		stage('Checkout') {
-			git 'https://github.com/Tschokkinen/HappyColours.git'
+			steps {
+				git 'https://github.com/Tschokkinen/HappyColours.git'
 			}
 		}
 		stage('Build') {
