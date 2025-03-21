@@ -20,5 +20,21 @@ pipeline {
                 echo 'Running tests...'
             }
         }
+        stage('Build Podman Image') {
+        	steps {
+        		script {
+        			// Build Podman image
+        			sh 'sudo podman build -t my-image-name .'
+        			}
+        		}
+        	}
+	stage('Run Podman Container') {
+            steps {
+                script {
+                    // Run the Podman container
+                    sh 'podman run -d --name my-container-name my-image-name'
+                }
+            }
+        }
     }
 }
