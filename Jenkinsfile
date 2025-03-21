@@ -24,7 +24,7 @@ pipeline {
         	steps {
         		script {
         			// Build Podman image
-        			sh 'podman build -t my-image-name .'
+        			sh 'podman build -t test-image .'
         			}
         		}
         	}
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     // Run the Podman container
-                    sh 'podman run -d --name my-container-name my-image-name'
+                    sh 'podman run -d --name test-container-name test-image'
                 }
             }
         }
