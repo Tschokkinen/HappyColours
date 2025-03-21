@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the repository
-                git 'https://github.com/Tschokkinen/HappyColours.git'
+                git branch: 'main', url: 'https://github.com/Tschokkinen/HappyColours.git'
             }
         }
         stage('Build') {
