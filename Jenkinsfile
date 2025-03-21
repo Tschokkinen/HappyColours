@@ -24,7 +24,7 @@ pipeline {
         	steps {
         		script {
         			// Build Podman image
-        			sh 'sudo podman build -t my-image-name .'
+        			sh 'podman build -t my-image-name .'
         			}
         		}
         	}
