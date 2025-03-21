@@ -36,5 +36,15 @@ pipeline {
                 }
             }
         }
+	stage('Stop Podman Container') {
+            steps {
+                script {
+                    // Stop the container
+                    sh 'podman stop test-container-name'
+                    // Remove the container
+                    sh 'podman rm test-container-name'
+                }
+            }
+        }
     }
 }
