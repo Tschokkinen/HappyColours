@@ -31,10 +31,12 @@ namespace Concentration
         [SerializeField] TMP_Text lastTimePoints;
         [SerializeField] TMP_Text curPoints;
         [SerializeField] TMP_Text playTime;
+        [SerializeField] int lastColour;
 
         // Start is called before the first frame update
         void Start()
         {
+            lastColour = 10;
             maxWaitTime = (maxWaitTime == 0.0f) ? 4.0f : maxWaitTime;
             StartCoroutine(ChangeColor());
             coroutine = null;
@@ -60,11 +62,24 @@ namespace Concentration
 
         GameObject GetNextSquare()
         {
-            float val = Random.Range(0.0f, 100.0f);
-            if (val < 25.0f && currentSquare != squares[0]) return squares[0];
-            if (val < 50.0f && val > 25.0f && currentSquare != squares[1]) return squares[1];
-            if (val < 75.0f && val > 50.0f && currentSquare != squares[2]) return squares[2];
-            if (val > 75.0f && currentSquare != squares[3]) return squares[3];
+            int val;
+            do
+            {
+                val = Random.Range(1, 5);
+            } while (val == lastColour);
+
+            lastColour = val;
+            
+            
+            // if (val < 25.0f && currentSquare != squares[0]) return squares[0];
+            // if (val < 50.0f && val > 25.0f && currentSquare != squares[1]) return squares[1];
+            // if (val < 75.0f && val > 50.0f && currentSquare != squares[2]) return squares[2];
+            // if (val > 75.0f && currentSquare != squares[3]) return squares[3];
+
+            if (val == 1 && currentSquare != squares[0]) return squares[0];
+            if (val == 2 && currentSquare != squares[1]) return squares[1];
+            if (val == 3 && currentSquare != squares[2]) return squares[2];
+            if (val == 4 && currentSquare != squares[3]) return squares[3];
             return null;
         }
 
